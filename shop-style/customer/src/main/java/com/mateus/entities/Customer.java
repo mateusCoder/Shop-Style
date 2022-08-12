@@ -1,16 +1,24 @@
-package com.mateus.dtos;
+package com.mateus.entities;
 
 import com.mateus.constants.Sex;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class CustomerDto {
+@NoArgsConstructor
+@Data
+@Builder
+@Entity
+public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String cpf;
 
@@ -18,6 +26,7 @@ public class CustomerDto {
 
     private String lastName;
 
+    @Enumerated(EnumType.STRING)
     private Sex sex;
 
     private LocalDate birthdate;

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/ms-costumer/costumer")
-public class CustomerController {
-
+@RequestMapping("- /v1/address")
+public class AddressController {
 }
