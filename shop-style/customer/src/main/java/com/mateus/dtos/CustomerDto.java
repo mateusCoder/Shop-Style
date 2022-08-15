@@ -1,7 +1,7 @@
 package com.mateus.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.mateus.constants.Sex;
+import com.mateus.constants.Gender;
 import com.mateus.entities.Address;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +21,7 @@ public class CustomerDto {
 
     private String lastName;
 
-    private Sex sex;
+    private Gender gender;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate birthdate;

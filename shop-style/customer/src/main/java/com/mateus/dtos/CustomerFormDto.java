@@ -1,6 +1,6 @@
 package com.mateus.dtos;
 
-import com.mateus.constants.Sex;
+import com.mateus.constants.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +27,7 @@ public class CustomerFormDto {
     private String lastName;
 
     @NotNull
-    private Sex sex;
+    private Gender gender;
 
     @NotNull
     private LocalDate birthdate;

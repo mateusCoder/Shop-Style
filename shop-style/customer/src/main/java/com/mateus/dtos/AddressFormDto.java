@@ -5,11 +5,12 @@ import com.mateus.entities.Customer;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 public class AddressFormDto {
 
-
+    @NotNull
     private State state;
 
     @NotBlank

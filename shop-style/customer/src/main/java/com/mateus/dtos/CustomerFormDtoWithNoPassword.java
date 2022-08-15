@@ -1,6 +1,6 @@
 package com.mateus.dtos;
 
-import com.mateus.constants.Sex;
+import com.mateus.constants.Gender;
 import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -23,7 +23,7 @@ public class CustomerFormDtoWithNoPassword {
     private String lastName;
 
     @NotNull
-    private Sex sex;
+    private Gender gender;
 
     @NotNull
     private LocalDate birthdate;

@@ -6,6 +6,7 @@ import com.mateus.dtos.CustomerFormDtoWithNoPassword;
 import com.mateus.dtos.CustomerPasswordFormDto;
 import com.mateus.entities.Address;
 import com.mateus.entities.Customer;
+import com.mateus.exceptions.ObjectNotFoundException;
 import com.mateus.repositories.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -55,6 +56,6 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     private Customer checkExistence(Long id){
-        return customerRepository.findById(id).orElseThrow(RuntimeException::new);
+        return customerRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Customer not found!"));
     }
 }

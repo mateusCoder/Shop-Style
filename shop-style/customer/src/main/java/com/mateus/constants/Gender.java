@@ -1,20 +1,19 @@
 package com.mateus.constants;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import lombok.AllArgsConstructor;
 
-public enum Sex {
+public enum Gender {
     MASCULINO("masculino"),
     FEMININO("feminino");
 
-    Sex(String value) {
+    Gender(String value) {
         this.value = value;
     }
     private String value;
 
     @JsonCreator
-    public static Sex fromValue(String value) {
-        for (Sex sex : Sex.values()) {
+    public static Gender fromValue(String value) {
+        for (Gender sex : Gender.values()) {
             if (sex.value.equalsIgnoreCase(value)) {
                 return sex;
             }

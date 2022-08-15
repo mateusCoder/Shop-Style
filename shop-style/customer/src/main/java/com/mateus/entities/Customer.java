@@ -1,6 +1,6 @@
 package com.mateus.entities;
 
-import com.mateus.constants.Sex;
+import com.mateus.constants.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,7 +29,7 @@ public class Customer {
     private String lastName;
 
     @Enumerated(EnumType.STRING)
-    private Sex sex;
+    private Gender sex;
 
     private LocalDate birthdate;
 
