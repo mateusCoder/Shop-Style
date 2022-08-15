@@ -2,6 +2,7 @@ package com.mateus.dtos;
 
 import com.mateus.constants.Gender;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
@@ -12,10 +13,12 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class CustomerFormDto {
 
     @CPF
     @NotBlank
+    @Pattern(regexp = "[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}")
     private String cpf;
 
     @Size(max=100,min=3)

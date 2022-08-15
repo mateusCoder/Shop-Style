@@ -3,12 +3,14 @@ package com.mateus.dtos;
 import com.mateus.constants.State;
 import com.mateus.entities.Customer;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class AddressDto {
 
     private State state;

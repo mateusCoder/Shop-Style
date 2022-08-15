@@ -57,7 +57,7 @@ public class AddressServiceImpl implements AddressService{
         addressRepository.deleteById(id);
     }
 
-    private Address checkExistence(Long id){
+    public Address checkExistence(Long id){
         return addressRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Address not found!"));
     }
 }

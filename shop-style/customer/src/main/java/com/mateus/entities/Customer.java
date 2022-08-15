@@ -1,5 +1,6 @@
 package com.mateus.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mateus.constants.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,7 +30,7 @@ public class Customer {
     private String lastName;
 
     @Enumerated(EnumType.STRING)
-    private Gender sex;
+    private Gender gender;
 
     private LocalDate birthdate;
 

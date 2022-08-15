@@ -4,7 +4,6 @@ import com.mateus.dtos.CustomerDto;
 import com.mateus.dtos.CustomerFormDto;
 import com.mateus.dtos.CustomerFormDtoWithNoPassword;
 import com.mateus.dtos.CustomerPasswordFormDto;
-import com.mateus.entities.Customer;
 import com.mateus.services.CustomerServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +39,7 @@ public class CustomerController {
     @Transactional
     @PutMapping("/{id}/password")
     public ResponseEntity<CustomerDto> updatePassword(@PathVariable Long id, @Valid @RequestBody CustomerPasswordFormDto passwordFormDto){
-        return ResponseEntity.ok(customerService.updatePassword(id, passwordFormDto));
+       CustomerDto response = customerService.updatePassword(id, passwordFormDto);
+        return ResponseEntity.ok(response);
     }
 }

@@ -42,8 +42,10 @@ public class CustomerServiceImpl implements CustomerService{
         List<Address> addresses = customerPassword.getAddresses();
         Customer customer = mapper.map(customerForm, Customer.class);
         customer.setId(id);
+        if(addresses != null){
+            addresses.forEach(customer::setAddresses);
+        }
         customer.setPassword(password);
-        addresses.forEach(customer::setAddresses);
         customerRepository.save(customer);
         return mapper.map(customer, CustomerDto.class);
     }
@@ -55,7 +57,7 @@ public class CustomerServiceImpl implements CustomerService{
         return mapper.map(customer, CustomerDto.class);
     }
 
-    private Customer checkExistence(Long id){
+    public Customer checkExistence(Long id){
         return customerRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Customer not found!"));
     }
 }
