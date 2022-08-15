@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -36,5 +38,13 @@ public class Customer {
     private String password;
 
     private boolean active;
+
+    @OneToMany
+    @JoinColumn(name = "CUSTOMER_ID")
+    private List<Address> addresses =  new ArrayList<>();
+
+    public void setAddresses(Address address){
+        addresses.add(address);
+    }
 
 }

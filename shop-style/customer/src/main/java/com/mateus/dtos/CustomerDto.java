@@ -2,11 +2,13 @@ package com.mateus.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mateus.constants.Sex;
+import com.mateus.entities.Address;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -28,4 +30,5 @@ public class CustomerDto {
 
     private boolean active;
 
+    private List<Address> addresses;
 }

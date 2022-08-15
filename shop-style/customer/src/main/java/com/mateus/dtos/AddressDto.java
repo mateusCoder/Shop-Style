@@ -1,5 +1,6 @@
 package com.mateus.dtos;
 
+import com.mateus.constants.State;
 import com.mateus.entities.Customer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddressDto {
 
-    private String state;
+    private State state;
 
     private String city;
 

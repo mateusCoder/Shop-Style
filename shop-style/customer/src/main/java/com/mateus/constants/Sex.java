@@ -1,6 +1,7 @@
 package com.mateus.constants;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import lombok.AllArgsConstructor;
 
 public enum Sex {
     MASCULINO("masculino"),

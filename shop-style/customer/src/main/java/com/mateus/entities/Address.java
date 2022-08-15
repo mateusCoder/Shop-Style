@@ -1,5 +1,6 @@
 package com.mateus.entities;
 
+import com.mateus.constants.State;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,8 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private State state;
 
     private String city;
 
@@ -31,8 +33,4 @@ public class Address {
     private String cep;
 
     private String complement;
-
-    @ManyToOne
-    private Customer customer;
-
 }
