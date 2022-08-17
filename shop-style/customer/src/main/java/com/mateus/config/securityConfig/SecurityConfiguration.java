@@ -10,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -47,13 +48,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests()
+       http.authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/v1/login").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(new TokenAuthenticationFilter(tokenService, customerRepository), UsernamePasswordAuthenticationFilter.class);
 
+    }
+
+    @Override
+    public void configure(WebSecurity webSecurity) throws Exception {
+        webSecurity
+                .ignoring()
+                .antMatchers("/h2-console/**")
+                .antMatchers("/swagger-ui/**")
+                .antMatchers("/v3/api-docs/**");
     }
 
 }
