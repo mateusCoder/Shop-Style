@@ -10,6 +10,7 @@ import com.mateus.exceptions.ObjectNotFoundException;
 import com.mateus.repositories.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -23,6 +24,8 @@ public class CustomerServiceImpl implements CustomerService{
     private final CustomerRepository customerRepository;
 
     private final ModelMapper mapper;
+
+    private final PasswordEncoder passwordEncoder;
     @Override
     public CustomerDto findById(Long id) {
         return mapper.map(checkExistence(id), CustomerDto.class);
@@ -31,6 +34,10 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public URI save(CustomerFormDto customerForm) {
         Customer customer = mapper.map(customerForm, Customer.class);
+
+        String encryptedPassword = passwordEncoder.encode(customer.getPassword());
+        customer.setPassword(encryptedPassword);
+
         customerRepository.save(customer);
         return ServletUriComponentsBuilder.fromCurrentRequest().path("{id}").build(customer.getId());
     }

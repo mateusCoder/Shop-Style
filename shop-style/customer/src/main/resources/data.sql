@@ -1,5 +1,5 @@
 INSERT INTO customer(cpf, first_name, last_name, gender, birthdate, email, password, active) VALUES
-('22345448997', 'Mateus', 'Cardoso', 'MASCULINO', '2022-10-02', 'mateus@email.com', '123', true),
+('22345448997', 'Mateus', 'Cardoso', 'MASCULINO', '2022-10-02', 'mateus@email.com', '$2a$10$6FrF3L8UD7geGSgJyisBHeP/1yj6QDUkOk2sNmCCT7Iiy8cXnlOO.', true),
 ('11225648135', 'Amanda', 'Oliveira', 'FEMININO', '2022-09-02', 'amanda@email.com', '123', true),
 ('11225648135', 'Cleide', 'Mello', 'FEMININO', '2022-09-02', 'cleide@email.com', '123', true),
 ('11225648135', 'Otavio', 'Mello', 'MASCULINO', '2022-09-02', 'otavio@email.com', '123', true),

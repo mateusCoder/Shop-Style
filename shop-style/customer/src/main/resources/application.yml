@@ -13,3 +13,12 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
+
+security:
+  jwt:
+    expiration: 30
+    secret: cm9vdAo=
+
+
+
+
