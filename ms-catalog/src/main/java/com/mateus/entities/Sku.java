@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Data
@@ -30,9 +27,11 @@ public class Sku {
 
     private String size;
 
-    private int height;
+    private Integer height;
 
-    private int width;
+    private Integer width;
 
-    private Long productId;
+    @ManyToOne
+    @JoinColumn(name="Product_id")
+    private Product productId;
 }

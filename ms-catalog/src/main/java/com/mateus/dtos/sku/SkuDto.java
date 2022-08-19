@@ -21,9 +21,9 @@ public class SkuDto {
 
     private String size;
 
-    private int height;
+    private Integer height;
 
-    private int width;
+    private Integer width;
 
     private Long productId;
 }

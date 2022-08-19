@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -26,10 +28,13 @@ public class SkuFormDto {
     private String size;
 
     @NotNull
-    private int height;
+    private Integer height;
 
     @NotNull
-    private int width;
+    private Integer width;
+
+    @NotNull
+    private List<String> images = new ArrayList<>();
 
     @NotNull
     private Long productId;
