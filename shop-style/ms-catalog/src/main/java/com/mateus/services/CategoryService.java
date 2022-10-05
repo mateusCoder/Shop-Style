@@ -15,4 +15,8 @@ public interface CategoryService {
     Page<CategoryGetDto> findAll(Pageable pageable);
 
     Page<ProductDto> findProductByCategory(Pageable pageable, Long id);
+
+    CategoryFormDto update(Long id, CategoryFormDto categoryFormDto);
+
+    void delete(Long id);
 }

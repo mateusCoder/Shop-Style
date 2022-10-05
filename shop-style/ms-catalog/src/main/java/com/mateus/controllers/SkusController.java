@@ -8,4 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/v1/skus")
 public class SkusController {
+
+    
 }

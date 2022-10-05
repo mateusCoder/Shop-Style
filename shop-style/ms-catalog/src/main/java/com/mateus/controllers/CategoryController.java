@@ -12,6 +12,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -36,5 +37,16 @@ public class CategoryController {
     public ResponseEntity<Page<ProductDto>> findProductByCategory(@PageableDefault(sort = "id",
             direction = Sort.Direction.ASC) Pageable pageable, @PathVariable(required = true) Long id){
         return ResponseEntity.ok(categoryService.findProductByCategory(pageable, id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoryFormDto> updateCategoryById(@PathVariable Long id, @RequestBody @Valid CategoryFormDto categoryFormDto){
+        return ResponseEntity.ok(categoryService.update(id, categoryFormDto));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id){
+        categoryService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }
