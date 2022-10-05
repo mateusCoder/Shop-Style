@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -28,7 +29,6 @@ public class Product {
 
     private boolean active;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category categoryId;
+    private Long categoryId;
+
 }

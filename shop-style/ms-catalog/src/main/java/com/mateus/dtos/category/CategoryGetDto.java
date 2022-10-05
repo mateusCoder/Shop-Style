@@ -3,32 +3,25 @@ package com.mateus.dtos.category;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Data
-@Builder
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryFormDto {
+public class CategoryGetDto {
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
-    @NotBlank
     private String name;
 
-    @NotNull
     private Boolean active;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Long parentId;
-    
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private List<CategoryFormDto> children;
+    private List<CategoryGetDto> children;
 }

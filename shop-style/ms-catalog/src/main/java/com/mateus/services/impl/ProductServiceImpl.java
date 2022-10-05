@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
     public URI save(ProductFormDto productFormDto) {
         Category category = checkExistenceCategory(productFormDto.getCategoryId());
         Product product = mapper.map(productFormDto, Product.class);
-        product.setCategoryId(category);
+        product.setCategoryId(category.getId());
         productRepository.save(product);
         return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").build(product.getId());
     }
@@ -53,7 +53,7 @@ public class ProductServiceImpl implements ProductService {
         Category category = checkExistenceCategory(productFormDto.getCategoryId());
         checkExistenceCategory(id);
         Product product = mapper.map(productFormDto, Product.class);
-        product.setCategoryId(category);
+        product.setCategoryId(category.getId());
         product.setId(id);
         productRepository.save(product);
 
