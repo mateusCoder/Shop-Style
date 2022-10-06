@@ -1,7 +1,6 @@
 package com.mateus.services.impl;
 
 import com.mateus.dtos.sku.SkuDto;
-import com.mateus.dtos.sku.SkuFormDto;
 import com.mateus.entities.Media;
 import com.mateus.entities.Product;
 import com.mateus.entities.Sku;
@@ -32,7 +31,7 @@ public class SkusServiceImpl implements SkusService {
     private final ModelMapper mapper;
 
     @Override
-    public URI save(SkuFormDto skuFormDto) {
+    public URI save(SkuDto skuFormDto) {
 
         Product product = checkProductValidation(skuFormDto.getProductId());
         List<Media> images = skuFormDto.getImages().stream().map(e -> mapper.map(e, Media.class)).toList();
@@ -47,7 +46,7 @@ public class SkusServiceImpl implements SkusService {
     }
 
     @Override
-    public SkuDto update(Long id, SkuFormDto skuFormDto) {
+    public SkuDto update(Long id, SkuDto skuFormDto) {
         Sku sku = checkSkuValidation(id);
         Product product = checkProductValidation(skuFormDto.getProductId());
         mediaRepository.deleteAll(sku.getImages());
