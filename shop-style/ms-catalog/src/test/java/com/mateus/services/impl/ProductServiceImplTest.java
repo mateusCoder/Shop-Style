@@ -87,7 +87,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void update() {
+    void whenUpdateThenReturnUpdateProductDto() {
         when(productRepository.findById(anyLong())).thenReturn(Optional.of(ProductBuilder.getProduct()));
         when(categoryRepository.findById(anyLong())).thenReturn(Optional.of(CategoryBuilder.getCategory()));
         when(productRepository.save(any())).thenReturn(ProductBuilder.getProduct());
