@@ -5,6 +5,7 @@ import com.mateus.dtos.category.CategoryGetDto;
 import com.mateus.dtos.product.ProductDto;
 import com.mateus.entities.Category;
 import com.mateus.entities.Product;
+import com.mateus.exceptions.ObjectNotFound;
 import com.mateus.repositories.CategoryRepository;
 import com.mateus.repositories.ProductRepository;
 import com.mateus.services.CategoryService;
@@ -76,7 +77,7 @@ public class CategoryServiceImpl implements CategoryService {
         Category parentCategory = parentCategoryValidation(categoryFormDto);
 
         Category category = categoryRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException());
+                .orElseThrow(() -> new ObjectNotFound("Category Not Found!"));
 
         List<Category> childrenCategories = categoryRepository.findAllByParentId(category.getId());
         List<Product> products = productRepository.findAllByCategoryId(category.getId());
@@ -106,7 +107,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void delete(Long id) {
-        Category category = categoryRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        Category category = categoryRepository.findById(id).orElseThrow(() -> new ObjectNotFound("Category Not Found!"));
         categoryRepository.delete(category);
     }
 
@@ -114,10 +115,10 @@ public class CategoryServiceImpl implements CategoryService {
 
         if (categoryFormDto.getParentId() != null){
             Category parentCategory = categoryRepository.findById(categoryFormDto.getParentId())
-                    .orElseThrow(() -> new RuntimeException());
+                    .orElseThrow(() -> new ObjectNotFound("Category Not Found!"));
 
             if (!parentCategory.isActive()){
-                throw new RuntimeException();
+                throw new ObjectNotFound("Category Not Found!");
             }
             return parentCategory;
         }

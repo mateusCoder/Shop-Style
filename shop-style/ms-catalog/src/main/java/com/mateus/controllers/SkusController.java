@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -17,12 +18,12 @@ public class SkusController {
     private final SkusServiceImpl skusService;
 
     @PostMapping
-    public ResponseEntity<URI> save(@RequestBody SkuFormDto skuFormDto){
+    public ResponseEntity<URI> save(@Valid @RequestBody SkuFormDto skuFormDto){
         return ResponseEntity.created(skusService.save(skuFormDto)).build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<SkuDto> update(@PathVariable Long id, @RequestBody SkuFormDto skuFormDto){
+    public ResponseEntity<SkuDto> update(@Valid @PathVariable Long id, @RequestBody SkuFormDto skuFormDto){
         return ResponseEntity.ok(skusService.update(id, skuFormDto));
     }
 

@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,12 +32,12 @@ public class ProductController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<ProductDto> save(@RequestBody ProductFormDto productFormDto){
+    public ResponseEntity<ProductDto> save(@Valid @RequestBody ProductFormDto productFormDto){
         return ResponseEntity.created(productService.save(productFormDto)).build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductDto> update(@PathVariable Long id, @RequestBody ProductFormDto productFormDto){
+    public ResponseEntity<ProductDto> update(@PathVariable Long id, @Valid @RequestBody ProductFormDto productFormDto){
         return ResponseEntity.ok(productService.update(id, productFormDto));
     }
 

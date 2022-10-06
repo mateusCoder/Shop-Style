@@ -4,6 +4,7 @@ import com.mateus.dtos.product.ProductDto;
 import com.mateus.dtos.product.ProductFormDto;
 import com.mateus.entities.Category;
 import com.mateus.entities.Product;
+import com.mateus.exceptions.ObjectNotFound;
 import com.mateus.repositories.CategoryRepository;
 import com.mateus.repositories.ProductRepository;
 import com.mateus.services.ProductService;
@@ -68,10 +69,10 @@ public class ProductServiceImpl implements ProductService {
 
 
     public Product checkExistenceProduct(Long id){
-        return productRepository.findById(id).orElseThrow(RuntimeException::new);
+        return productRepository.findById(id).orElseThrow(() -> new ObjectNotFound("Product Not Found!"));
     }
 
     public Category checkExistenceCategory(Long id){
-        return categoryRepository.findById(id).orElseThrow(RuntimeException::new);
+        return categoryRepository.findById(id).orElseThrow(() -> new ObjectNotFound("Category Not Found!"));
     }
 }

@@ -23,7 +23,7 @@ public class CategoryController {
     private final CategoryServiceImpl categoryService;
 
     @PostMapping
-    public ResponseEntity<URI> save(@RequestBody CategoryFormDto categoryFormDto){
+    public ResponseEntity<URI> save(@Valid @RequestBody CategoryFormDto categoryFormDto){
         return ResponseEntity.created(categoryService.save(categoryFormDto)).build();
     }
 
@@ -40,7 +40,7 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CategoryFormDto> updateCategoryById(@PathVariable Long id, @RequestBody @Valid CategoryFormDto categoryFormDto){
+    public ResponseEntity<CategoryFormDto> updateCategoryById(@PathVariable Long id, @Valid @RequestBody CategoryFormDto categoryFormDto){
         return ResponseEntity.ok(categoryService.update(id, categoryFormDto));
     }
 

@@ -5,6 +5,7 @@ import com.mateus.dtos.sku.SkuFormDto;
 import com.mateus.entities.Media;
 import com.mateus.entities.Product;
 import com.mateus.entities.Sku;
+import com.mateus.exceptions.ObjectNotFound;
 import com.mateus.repositories.MediaRepository;
 import com.mateus.repositories.ProductRepository;
 import com.mateus.repositories.SkuRepository;
@@ -81,7 +82,7 @@ public class SkusServiceImpl implements SkusService {
     }
 
     public Product checkProductValidation(Long id){
-        Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        Product product = productRepository.findById(id).orElseThrow(() -> new ObjectNotFound("Product Not Found!"));
         if (product.isActive()){
             return product;
         }else {
@@ -90,6 +91,6 @@ public class SkusServiceImpl implements SkusService {
     }
 
     public Sku checkSkuValidation(Long id){
-        return skuRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        return skuRepository.findById(id).orElseThrow(() -> new ObjectNotFound("Sku Not Found!"));
     }
 }
