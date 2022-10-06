@@ -1,17 +1,19 @@
 package com.mateus.dtos.media;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Builder
 public class MediaDto {
 
-    private String images;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long id;
 
-    private Long skuId;
+    private String imageUrl;
 }

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -31,7 +33,9 @@ public class Sku {
 
     private Integer width;
 
-    @ManyToOne
-    @JoinColumn(name="Product_id")
-    private Product productId;
+    private Long productId;
+
+    @OneToMany
+    @JoinColumn(name = "skuId", referencedColumnName = "id")
+    private List<Media> images;
 }

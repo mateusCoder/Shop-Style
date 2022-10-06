@@ -18,9 +18,7 @@ public class Media {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String images;
+    private String imageUri;
 
-    @ManyToOne
-    @JoinColumn(name = "sku_id")
-    private Sku skuId;
+    private Long skuId;
 }

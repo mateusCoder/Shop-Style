@@ -1,5 +1,8 @@
 package com.mateus.dtos.sku;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mateus.dtos.media.MediaDto;
+import com.mateus.entities.Media;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,9 +14,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
 public class SkuFormDto {
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long id;
 
     @NotNull
     private BigDecimal price;
@@ -34,8 +42,9 @@ public class SkuFormDto {
     private Integer width;
 
     @NotNull
-    private List<String> images = new ArrayList<>();
+    private List<MediaDto> images;
 
     @NotNull
     private Long productId;
+
 }
