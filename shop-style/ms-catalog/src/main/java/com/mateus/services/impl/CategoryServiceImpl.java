@@ -111,7 +111,7 @@ public class CategoryServiceImpl implements CategoryService {
         categoryRepository.delete(category);
     }
 
-    private Category parentCategoryValidation(CategoryFormDto categoryFormDto){
+    protected Category parentCategoryValidation(CategoryFormDto categoryFormDto){
 
         if (categoryFormDto.getParentId() != null){
             Category parentCategory = categoryRepository.findById(categoryFormDto.getParentId())
@@ -125,7 +125,7 @@ public class CategoryServiceImpl implements CategoryService {
         return null;
     }
 
-    private void updateChildren(Category category) {
+    protected void updateChildren(Category category) {
 
         List<Category> childrenCategory = categoryRepository.findAllByParentId(category.getId());
         List<Product> products = productRepository.findAllByCategoryId(category.getId());

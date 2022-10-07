@@ -72,7 +72,7 @@ class SkusServiceImplTest {
     }
 
     @Test
-    void update() {
+    void whenUpdateThenReturnUpdateSkuDto() {
         when(skuRepository.findById(anyLong())).thenReturn(Optional.of(SkuBuilder.getSku()));
         when(productRepository.findById(anyLong())).thenReturn(Optional.of(ProductBuilder.getProduct()));
         when(mediaRepository.saveAll(any())).thenReturn((List.of(MediaBuilder.getMedia())));
@@ -86,7 +86,7 @@ class SkusServiceImplTest {
     }
 
     @Test
-    void delete() {
+    void whenDeleteByIdWithSuccess() {
         when(productRepository.findById(anyLong())).thenReturn(Optional.of(ProductBuilder.getProduct()));
         when(skuRepository.findById(anyLong())).thenReturn(Optional.of(SkuBuilder.getSku()));
         doNothing().when(skuRepository).delete(any());

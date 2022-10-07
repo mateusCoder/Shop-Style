@@ -51,7 +51,7 @@ class CategoryControllerTest {
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/v1/categories/{id}")
-                .build(CategoryBuilder.getCategory().getId());
+                .build(CategoryBuilder.getCategoryChildren().getId());
 
         when(categoryService.save(any())).thenReturn(uri);
 
@@ -90,7 +90,7 @@ class CategoryControllerTest {
         when(categoryService.update(anyLong(), any())).thenReturn(CategoryBuilder.getCategoryFormDto());
 
         ResponseEntity<CategoryFormDto> response = categoryController.updateCategoryById(
-                CategoryBuilder.getCategory().getId(),
+                CategoryBuilder.getCategoryChildren().getId(),
                 CategoryBuilder.getCategoryFormDto());
 
         assertNotNull(response);
@@ -102,7 +102,7 @@ class CategoryControllerTest {
     void whenDeleteCategoryByIdWithSuccess(){
         doNothing().when(categoryService).delete(anyLong());
 
-        ResponseEntity<?> response = categoryController.delete(CategoryBuilder.getCategory().getId());
+        ResponseEntity<?> response = categoryController.delete(CategoryBuilder.getCategoryChildren().getId());
 
         assertEquals(ResponseEntity.class, response.getClass());
         verify(categoryService, times(1)).delete(anyLong());

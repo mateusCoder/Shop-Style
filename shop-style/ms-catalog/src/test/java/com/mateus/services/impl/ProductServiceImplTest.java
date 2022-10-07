@@ -78,7 +78,7 @@ class ProductServiceImplTest {
         MockHttpServletRequest request =new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
 
-        when(categoryRepository.findById(anyLong())).thenReturn(Optional.of(CategoryBuilder.getCategory()));
+        when(categoryRepository.findById(anyLong())).thenReturn(Optional.of(CategoryBuilder.getCategoryChildren()));
         when(productRepository.save(any())).thenReturn(ProductBuilder.getProduct());
 
         URI response = productService.save(ProductBuilder.getProductFormDto());
@@ -89,7 +89,7 @@ class ProductServiceImplTest {
     @Test
     void whenUpdateThenReturnUpdateProductDto() {
         when(productRepository.findById(anyLong())).thenReturn(Optional.of(ProductBuilder.getProduct()));
-        when(categoryRepository.findById(anyLong())).thenReturn(Optional.of(CategoryBuilder.getCategory()));
+        when(categoryRepository.findById(anyLong())).thenReturn(Optional.of(CategoryBuilder.getCategoryChildren()));
         when(productRepository.save(any())).thenReturn(ProductBuilder.getProduct());
 
         ProductDto response = productService.update(ProductBuilder.getProduct().getId(),
@@ -125,12 +125,12 @@ class ProductServiceImplTest {
 
     @Test
     void whenFindOneThenReturnCheckCategoryExistence() {
-        when(categoryRepository.findById(anyLong())).thenReturn(Optional.of(CategoryBuilder.getCategory()));
+        when(categoryRepository.findById(anyLong())).thenReturn(Optional.of(CategoryBuilder.getCategoryChildren()));
 
-        Category response = productService.checkExistenceCategory(CategoryBuilder.getCategory().getId());
+        Category response = productService.checkExistenceCategory(CategoryBuilder.getCategoryChildren().getId());
 
         assertNotNull(response);
         assertEquals(Category.class, response.getClass());
-        assertEquals(CategoryBuilder.getCategory().getName(), response.getName());
+        assertEquals(CategoryBuilder.getCategoryChildren().getName(), response.getName());
     }
 }
