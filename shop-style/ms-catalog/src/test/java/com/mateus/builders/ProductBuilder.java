@@ -26,7 +26,7 @@ public class ProductBuilder {
 
     private final static Long categoryId = 1L;
 
-    private final static List<Sku> skus = new ArrayList<>();
+    private final static List<Sku> skus = new ArrayList<>(List.of(SkuBuilder.getSku()));
 
 
     public static Product getProduct(){
