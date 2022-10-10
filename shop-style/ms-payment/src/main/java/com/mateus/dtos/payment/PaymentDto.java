@@ -1,5 +1,6 @@
 package com.mateus.dtos.payment;
 
+import com.mateus.entities.Installment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +17,6 @@ public class PaymentDto {
     private Boolean installments;
 
     private Boolean active;
+
+    private Installment installment;
 }
