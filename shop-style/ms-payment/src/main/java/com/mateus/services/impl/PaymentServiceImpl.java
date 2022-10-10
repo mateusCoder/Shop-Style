@@ -3,6 +3,7 @@ package com.mateus.services.impl;
 import com.mateus.dtos.payment.PaymentDto;
 import com.mateus.dtos.payment.PaymentFormDto;
 import com.mateus.entities.Payment;
+import com.mateus.exceptions.ObjectNotFound;
 import com.mateus.repositories.PaymentRepository;
 import com.mateus.services.PaymentService;
 import lombok.RequiredArgsConstructor;
@@ -50,7 +51,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     public Payment checkPaymentExistence(Long id){
-        return paymentRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        return paymentRepository.findById(id).orElseThrow(() -> new ObjectNotFound("Payment Not Found"));
     }
 
 }

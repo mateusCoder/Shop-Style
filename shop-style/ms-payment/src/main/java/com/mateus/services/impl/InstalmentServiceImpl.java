@@ -4,6 +4,8 @@ import com.mateus.dtos.installment.InstallmentDto;
 import com.mateus.dtos.installment.InstallmentFormDto;
 import com.mateus.entities.Installment;
 import com.mateus.entities.Payment;
+import com.mateus.exceptions.Conflict;
+import com.mateus.exceptions.ObjectNotFound;
 import com.mateus.repositories.InstallmentRepository;
 import com.mateus.repositories.PaymentRepository;
 import com.mateus.services.InstallmentService;
@@ -23,6 +25,7 @@ public class InstalmentServiceImpl implements InstallmentService {
     private final PaymentRepository paymentRepository;
 
     private final ModelMapper mapper;
+
     @Override
     public URI save(InstallmentFormDto installmentFormDto) {
         Payment payment = checkPaymentExistence(installmentFormDto.getPaymentId());
@@ -60,15 +63,15 @@ public class InstalmentServiceImpl implements InstallmentService {
     }
 
     public Payment checkPaymentExistence(Long id){
-        Payment payment = paymentRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        Payment payment = paymentRepository.findById(id).orElseThrow(() -> new ObjectNotFound("Payment Not Found"));
         if (payment.getInstallments()){
             return payment;
         }else{
-            throw new RuntimeException();
+            throw new Conflict("Payment has no installments!");
         }
     }
 
     public Installment checkInstallmentExistence(Long id){
-        return installmentRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        return installmentRepository.findById(id).orElseThrow(() -> new ObjectNotFound("Installment Not Found"));
     }
 }

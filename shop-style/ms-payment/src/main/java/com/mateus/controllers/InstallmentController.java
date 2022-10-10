@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/v1/installments")
@@ -15,12 +17,12 @@ public class InstallmentController {
     private final InstalmentServiceImpl instalmentService;
 
     @PostMapping
-    public ResponseEntity<InstallmentDto> save(@RequestBody InstallmentFormDto installmentFormDto){
+    public ResponseEntity<InstallmentDto> save(@Valid @RequestBody InstallmentFormDto installmentFormDto){
         return ResponseEntity.created(instalmentService.save(installmentFormDto)).build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<InstallmentDto> update(@PathVariable Long id, @RequestBody InstallmentFormDto installmentFormDto){
+    public ResponseEntity<InstallmentDto> update(@PathVariable Long id, @Valid @RequestBody InstallmentFormDto installmentFormDto){
         return ResponseEntity.ok(instalmentService.update(id, installmentFormDto));
     }
 

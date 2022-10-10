@@ -11,6 +11,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/v1/payments")
@@ -19,7 +21,7 @@ public class PaymentController {
     private final PaymentServiceImpl paymentService;
 
     @PostMapping
-    public ResponseEntity<PaymentDto> save(@RequestBody PaymentFormDto paymentFormDto){
+    public ResponseEntity<PaymentDto> save(@Valid @RequestBody PaymentFormDto paymentFormDto){
         return ResponseEntity.created(paymentService.save(paymentFormDto)).build();
     }
 
@@ -30,7 +32,7 @@ public class PaymentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PaymentDto> update(@PathVariable Long id, @RequestBody PaymentFormDto paymentFormDto){
+    public ResponseEntity<PaymentDto> update(@PathVariable Long id, @Valid @RequestBody PaymentFormDto paymentFormDto){
         return ResponseEntity.ok(paymentService.update(id, paymentFormDto));
     }
 
