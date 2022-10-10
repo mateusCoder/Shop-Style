@@ -18,7 +18,7 @@ import java.net.URI;
 
 @RequiredArgsConstructor
 @Service
-public class InstalmentServiceImpl implements InstallmentService {
+public class InstallmentServiceImpl implements InstallmentService {
 
     private final InstallmentRepository installmentRepository;
 

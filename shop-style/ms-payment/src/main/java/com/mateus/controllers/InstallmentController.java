@@ -2,7 +2,7 @@ package com.mateus.controllers;
 
 import com.mateus.dtos.installment.InstallmentDto;
 import com.mateus.dtos.installment.InstallmentFormDto;
-import com.mateus.services.impl.InstalmentServiceImpl;
+import com.mateus.services.impl.InstallmentServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 @RequestMapping("/v1/installments")
 public class InstallmentController {
 
-    private final InstalmentServiceImpl instalmentService;
+    private final InstallmentServiceImpl instalmentService;
 
     @PostMapping
     public ResponseEntity<InstallmentDto> save(@Valid @RequestBody InstallmentFormDto installmentFormDto){

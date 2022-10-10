@@ -2,14 +2,12 @@ package com.mateus.controllers;
 
 import com.mateus.builders.InstallmentBuilder;
 import com.mateus.dtos.installment.InstallmentDto;
-import com.mateus.entities.Installment;
-import com.mateus.services.impl.InstalmentServiceImpl;
+import com.mateus.services.impl.InstallmentServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +30,7 @@ class InstallmentControllerTest {
     InstallmentController installmentController;
 
     @Mock
-    InstalmentServiceImpl instalmentService;
+    InstallmentServiceImpl instalmentService;
 
     @BeforeEach
     void setUp() {
