@@ -58,7 +58,7 @@ class PaymentServiceImplTest {
     }
 
     @Test
-    void whenFindAllThenReturnPageableProductDto() {
+    void whenFindAllThenReturnPageablePaymentDto() {
         when(paymentRepository.findAll((Pageable) any())).thenReturn(PaymentBuilder.getPaymentPageable());
 
         Pageable page = PageRequest.of(0, 100);
